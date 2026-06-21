@@ -1,0 +1,9 @@
+[Unit]
+Description=Manual bounded industrial research cycle (%i minutes)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/industrial-research-automation-lab
+ExecStart=/home/ubuntu/industrial-research-automation-lab/.venv/bin/python -m industrial_research_lab.cli --profile full --max-minutes %i --output artifacts/server-full-%i

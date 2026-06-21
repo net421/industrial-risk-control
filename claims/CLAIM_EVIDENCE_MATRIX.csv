@@ -1,0 +1,6 @@
+claim_id,claim,status,required_evidence,evidence_path
+C1,"Mean drift equals delta=2 for all three configurations",verified_analytic,"Analytic substitution",protocol/PREREGISTRATION.md
+C2,"Finite-horizon collapse risk is monotone on the tested grid",preliminary_supported,"Pilot and confirmation summaries",results/compact_summary.json
+C3,"Python and Numba implementations agree exactly",verified,"Exact trajectory-output comparison",results/validation/VALIDATION_REPORT.md
+C4,"Direction is stable under the confirmation seed",verified_smoke,"Independent-seed ordering",results/confirmation_summary.csv
+C5,"Numba improves warmed kernel runtime",verified_indicative,"Reference and warmed benchmark",results/validation/PERFORMANCE_REPORT.md

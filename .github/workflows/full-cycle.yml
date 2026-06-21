@@ -1,0 +1,40 @@
+name: Full Bounded Cycle
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_minutes:
+        description: Maximum computation time in minutes
+        required: true
+        default: "90"
+
+permissions:
+  contents: read
+
+jobs:
+  full-cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - name: Run bounded full profile
+        run: >-
+          python -m industrial_research_lab.cli --profile full
+          --max-minutes "${{ inputs.max_minutes }}"
+          --output "artifacts/full-${{ github.run_id }}-${{ github.run_attempt }}"
+          --fresh
+      - name: Validate artifacts
+        run: >-
+          python scripts/validate_portfolio_run.py
+          --run-dir "artifacts/full-${{ github.run_id }}-${{ github.run_attempt }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-cycle-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/full-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 30

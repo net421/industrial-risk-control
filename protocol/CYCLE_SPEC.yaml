@@ -1,0 +1,56 @@
+cycle:
+  name: quality_max_microcycle_01
+  mode: infrastructure_smoke_test
+  domain: criticality_based_industrial_risk_and_control
+
+budgets:
+  max_wall_time_minutes: 20
+  soft_stop_minutes: 18
+  max_literature_items: 5
+  max_candidate_hypotheses: 5
+  max_selected_hypotheses: 1
+  max_full_confirmations: 1
+
+phase_budgets_minutes:
+  protocol: 2
+  discovery: 4
+  formalization: 3
+  pilot: 5
+  confirmation: 3
+  adversarial_review: 2
+  integration: 1
+
+experiment_limits:
+  parameter_configurations: 3
+  pilot_replications: 250
+  confirmation_replications: 500
+  horizon: 500
+  master_seed: 20260429
+  replication_seed: 20260430
+
+gates:
+  require_falsifiable_claim: true
+  require_frozen_plan: true
+  require_reference_numba_exact_agreement: true
+  require_fixed_seed_reproduction: true
+  require_uncertainty_intervals: true
+  prohibit_novelty_claims: true
+  prohibit_manuscript_generation: true
+
+outputs:
+  state: protocol/RUN_STATE.json
+  gap_map: literature/gap_maps/GAP_MAP.md
+  hypotheses: hypotheses/ranked/HYPOTHESES_RANKED.csv
+  preregistration: protocol/PREREGISTRATION.md
+  claim_matrix: claims/CLAIM_EVIDENCE_MATRIX.csv
+  decision_log: decisions/DECISION_LOG.md
+  experiment_plan: experiments/selected/EXPERIMENT_PLAN.md
+  validation: results/validation/VALIDATION_REPORT.md
+  performance: results/validation/PERFORMANCE_REPORT.md
+  skeptical_review: reports/reviewer/SKEPTICAL_REVIEW.md
+  industrial_report: reports/industrial/INDUSTRIAL_VALUE_REPORT.md
+  portfolio: reports/portfolio/PORTFOLIO_REPORT.md
+  next_actions: reports/portfolio/NEXT_ACTIONS.md
+  final_report: MICRO_CYCLE_REPORT.md
+  manifest: results/MANIFEST.json
+  checksums: results/CHECKSUMS.sha256

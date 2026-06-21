@@ -1,0 +1,44 @@
+---
+- name: Configure industrial research batch host
+  hosts: research_lab
+  become: true
+  vars:
+    lab_user: ubuntu
+    lab_root: /home/ubuntu/industrial-research-automation-lab
+    repo_url: https://github.com/net421/industrial-research-automation-lab.git
+  tasks:
+    - name: Install minimal system packages
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - git
+          - python3
+          - python3-venv
+          - python3-pip
+          - build-essential
+          - tmux
+          - jq
+          - ripgrep
+        state: present
+
+    - name: Check out the repository
+      become_user: "{{ lab_user }}"
+      ansible.builtin.git:
+        repo: "{{ repo_url }}"
+        dest: "{{ lab_root }}"
+        version: main
+        update: true
+
+    - name: Create the virtual environment
+      become_user: "{{ lab_user }}"
+      ansible.builtin.command:
+        cmd: python3 -m venv .venv
+        chdir: "{{ lab_root }}"
+        creates: "{{ lab_root }}/.venv/bin/python"
+
+    - name: Install the project
+      become_user: "{{ lab_user }}"
+      ansible.builtin.pip:
+        name: "{{ lab_root }}[dev]"
+        virtualenv: "{{ lab_root }}/.venv"
+

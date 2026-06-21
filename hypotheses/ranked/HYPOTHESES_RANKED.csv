@@ -1,0 +1,7 @@
+rank,hypothesis,novelty,mathematical_clarity,industrial_relevance,feasibility,reproducibility,publication_potential,weighted_score,decision
+1,"At fixed positive slack, changing disruption-demand composition changes finite-horizon collapse risk",3.5,4.8,4.2,5.0,5.0,3.8,4.33,selected_for_smoke_test
+2,"Outage persistence raises collapse risk beyond stationary outage probability",4.2,4.3,4.5,2.8,3.8,4.5,4.05,defer_requires_new_kernel
+3,"Threshold under-calibration is more costly than equal over-calibration",3.2,4.2,4.8,3.5,4.2,4.1,4.00,defer_requires_policy_baseline
+4,"Monitoring delay creates asymmetric near-critical control regret",4.0,4.0,4.7,2.5,3.4,4.4,3.88,defer_requires_dynamic_estimator
+5,"Equal local criticality produces topology-dependent network loss",3.8,4.1,4.6,2.2,3.2,4.3,3.70,defer_exceeds_microcycle
+

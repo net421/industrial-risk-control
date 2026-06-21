@@ -1,0 +1,10 @@
+[Unit]
+Description=Industrial research lab validation
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/industrial-research-automation-lab
+ExecStart=/home/ubuntu/industrial-research-automation-lab/.venv/bin/python -m pytest -q
+

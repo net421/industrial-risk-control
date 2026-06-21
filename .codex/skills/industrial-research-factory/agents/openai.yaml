@@ -1,0 +1,4 @@
+interface:
+  display_name: "Industrial Research Factory"
+  short_description: "Run gated reproducible industrial research cycles"
+  default_prompt: "Use $industrial-research-factory to run a bounded reproducible research microcycle."

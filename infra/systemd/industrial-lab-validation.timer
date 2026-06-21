@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly industrial research lab validation
+
+[Timer]
+OnCalendar=Mon *-*-* 05:17:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
