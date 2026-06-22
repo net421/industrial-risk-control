@@ -1,0 +1,44 @@
+name: Evidence-Linked Vertical Cycle
+
+on:
+  workflow_dispatch:
+    inputs:
+      literature_items:
+        description: Number of live OpenAlex records
+        required: true
+        default: "12"
+      pilot_profile:
+        description: Deterministic compute profile
+        required: true
+        type: choice
+        options: [ci, smoke]
+        default: smoke
+
+permissions:
+  contents: read
+
+jobs:
+  vertical-cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - name: Run live evidence-linked cycle
+        run: >-
+          python scripts/run_vertical_cycle.py
+          --output-root artifacts/vertical-cycle
+          --max-literature-items "${{ inputs.literature_items }}"
+          --pilot-profile "${{ inputs.pilot_profile }}"
+          --fresh
+      - name: Validate evidence and checksums
+        run: python scripts/validate_vertical_cycle.py --run-dir artifacts/vertical-cycle
+      - uses: actions/upload-artifact@v7
+        with:
+          name: vertical-cycle-${{ github.run_id }}
+          path: artifacts/vertical-cycle
+          retention-days: 14
