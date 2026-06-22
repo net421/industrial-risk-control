@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "## Research discovery" >> "$GITHUB_STEP_SUMMARY"
           echo "The workflow produces every declared stage artifact, but does not establish novelty or publishability without live literature comparison." >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: research-discovery-${{ github.run_id }}
           path: |

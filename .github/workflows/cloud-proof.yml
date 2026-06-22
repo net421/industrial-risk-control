@@ -62,7 +62,7 @@ jobs:
         if: steps.research_run.outcome != 'success'
         run: |
           echo "The hosted proof did not complete. Run scripts/run_local_cloud_proof_equivalent.sh or .ps1, or use an AWS/Oracle worker." >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always() && inputs.upload_artifacts
         with:
           name: cloud-proof-${{ github.run_id }}-${{ github.run_attempt }}
