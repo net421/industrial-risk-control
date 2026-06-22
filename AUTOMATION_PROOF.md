@@ -16,24 +16,24 @@ systematic literature search or establish publishability.
 
 ## 2. Actually Run On GitHub Actions
 
-None yet. GitHub CLI authentication is expired and this local repository has no
-remote. Workflow files being present is not evidence that Actions executed.
+- Automatic CI passed on final commit `e6774d0`: run `27932818188`.
+- CodeQL v4 passed on final commit `e6774d0`: run `27932818230`.
+- The manual smoke cycle passed all tests, ran deterministic computation,
+  validated outputs, and uploaded artifact `smoke-cycle-27932826236` with SHA-256
+  digest `a72b48d61c306da78d704fc8982688681162fc310d4e3a25a016d2fad2a3757f`.
+- The bounded Research Discovery workflow passed: run `27932618863`.
 
 ## 3. Prepared But Not Yet Run On GitHub
 
-- Automatic `ci.yml` on push and pull requests.
-- Manual `smoke-cycle.yml`.
 - Manual `cloud-proof.yml` with a ten-minute default.
 - Manual `full-cycle.yml` with a safe short default and server guidance.
-- Manual `research-discovery.yml`.
 - Scheduled and manual `weekly-validation.yml`.
-- `codeql.yml`, dependency updates, and tag-based releases.
+- Tag-based releases.
 
-## 4. Requires Manual GitHub Authentication
+## 4. Public Repository
 
-Run `gh auth login -h github.com`, verify with `gh auth status`, then follow
-`GITHUB_PUBLISH_INSTRUCTIONS.md`. Publishing and workflow triggering require the
-human account owner.
+The source and workflow history are public at
+`https://github.com/net421/industrial-risk-control`.
 
 ## 5. Requires A Future Server Or Self-Hosted Runner
 
