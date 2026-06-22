@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
           cache: pip
@@ -31,7 +31,7 @@ jobs:
             python scripts/validate_portfolio_run.py --run-dir artifacts/weekly-ci
             python .codex/skills/industrial-research-factory/scripts/validate_cycle.py
           } 2>&1 | tee logs/weekly-validation.log
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: weekly-validation-${{ github.run_id }}
