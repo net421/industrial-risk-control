@@ -2,8 +2,6 @@ name: Smoke Cycle
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "17 5 * * 1"
 
 permissions:
   contents: read
@@ -26,5 +24,11 @@ jobs:
         if: always()
         with:
           name: smoke-cycle-${{ github.run_id }}
-          path: artifacts/smoke
+          path: |
+            artifacts/smoke/summary.json
+            artifacts/smoke/summary.csv
+            artifacts/smoke/VALIDATION_REPORT.md
+            artifacts/smoke/PERFORMANCE_REPORT.md
+            artifacts/smoke/RUN_REPORT.md
+            artifacts/smoke/CHECKSUMS.sha256
           retention-days: 14

@@ -51,6 +51,16 @@ PROFILES = {
         max_minutes=15.0,
         reference_runs=64,
     ),
+    "cloud-proof": RunProfile(
+        name="cloud-proof",
+        p_values=(0.02, 0.06, 0.10, 0.14, 0.20),
+        replication_seeds=(20260429, 20260430),
+        horizon=750,
+        batch_size=2_500,
+        max_batches_per_configuration=10_000,
+        max_minutes=10.0,
+        reference_runs=32,
+    ),
     "full": RunProfile(
         name="full",
         p_values=(0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20),
@@ -299,10 +309,10 @@ def write_run_artifacts(
         "\n".join([
             "# Automated Research Run",
             "",
-            f"**Profile:** `{profile.name}`  ",
-            f"**Status:** `{state['status']}`  ",
-            f"**Trajectories:** {total_runs:,}  ",
-            f"**Elapsed:** {elapsed_seconds / 60.0:.2f} minutes  ",
+            f"**Profile:** `{profile.name}`",
+            f"**Status:** `{state['status']}`",
+            f"**Trajectories:** {total_runs:,}",
+            f"**Elapsed:** {elapsed_seconds / 60.0:.2f} minutes",
             f"**Infrastructure gate:** {'PASS' if infrastructure_pass else 'FAIL'}",
             "",
             "This artifact demonstrates a checkpointable, deterministic Monte Carlo pipeline.",
@@ -432,4 +442,3 @@ def run_profile(
         elapsed_seconds,
         stop_reason,
     )
-

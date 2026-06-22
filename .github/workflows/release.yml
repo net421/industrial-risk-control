@@ -21,14 +21,13 @@ jobs:
       - run: python -m pytest -q
       - name: Package exact Git tree
         run: |
-          git archive --format=zip --output="industrial-research-automation-lab-${GITHUB_REF_NAME}.zip" HEAD
-          sha256sum "industrial-research-automation-lab-${GITHUB_REF_NAME}.zip" > "industrial-research-automation-lab-${GITHUB_REF_NAME}.zip.sha256"
+          git archive --format=zip --output="industrial-risk-control-${GITHUB_REF_NAME}.zip" HEAD
+          sha256sum "industrial-risk-control-${GITHUB_REF_NAME}.zip" > "industrial-risk-control-${GITHUB_REF_NAME}.zip.sha256"
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         run: >-
           gh release create "${GITHUB_REF_NAME}"
-          "industrial-research-automation-lab-${GITHUB_REF_NAME}.zip"
-          "industrial-research-automation-lab-${GITHUB_REF_NAME}.zip.sha256"
+          "industrial-risk-control-${GITHUB_REF_NAME}.zip"
+          "industrial-risk-control-${GITHUB_REF_NAME}.zip.sha256"
           --generate-notes
-

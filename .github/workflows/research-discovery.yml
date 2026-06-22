@@ -1,0 +1,54 @@
+name: Research Discovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      pilot_profile:
+        description: Keep the default inexpensive
+        required: true
+        type: choice
+        options: [ci, smoke]
+        default: ci
+
+permissions:
+  contents: read
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - name: Run bounded discovery pipeline
+        run: >-
+          python scripts/run_research_discovery.py
+          --output-root artifacts/research-discovery
+          --pilot-profile "${{ inputs.pilot_profile }}"
+          --fresh
+      - name: Validate discovery artifacts
+        run: python scripts/validate_research_discovery.py --run-dir artifacts/research-discovery
+      - name: Record evidence boundary
+        run: |
+          echo "## Research discovery" >> "$GITHUB_STEP_SUMMARY"
+          echo "The workflow produces every declared stage artifact, but does not establish novelty or publishability without live literature comparison." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-discovery-${{ github.run_id }}
+          path: |
+            artifacts/research-discovery/literature/GAP_MAP.md
+            artifacts/research-discovery/hypotheses/HYPOTHESES_RANKED.csv
+            artifacts/research-discovery/experiments/EXPERIMENT_PLAN.md
+            artifacts/research-discovery/claims/CLAIM_EVIDENCE_MATRIX.csv
+            artifacts/research-discovery/results/validation/VALIDATION_REPORT.md
+            artifacts/research-discovery/reports/portfolio/PORTFOLIO_REPORT.md
+            artifacts/research-discovery/reports/portfolio/PAPER_OPPORTUNITIES.md
+            artifacts/research-discovery/reports/portfolio/NEXT_ACTIONS.md
+            artifacts/research-discovery/DISCOVERY_STATUS.json
+            artifacts/research-discovery/DISCOVERY_MANIFEST.json
+            artifacts/research-discovery/CHECKSUMS.sha256
+          retention-days: 14

@@ -21,3 +21,19 @@ def test_dependabot_configuration_parses():
     )
     assert payload["version"] == 2
 
+
+def test_public_metadata_and_proof_documents_exist():
+    required = (
+        "LICENSE",
+        "CITATION.cff",
+        "AUTOMATION_PROOF.md",
+        "LOCAL_FULL_RUN_SUMMARY.md",
+        "GITHUB_AUTOMATION_REPORT.md",
+        "GITHUB_ACTIONS_RUNBOOK.md",
+        "GITHUB_PUBLISH_INSTRUCTIONS.md",
+        "LOCAL_VALIDATION_REPORT.md",
+    )
+    for relative in required:
+        assert (ROOT / relative).is_file(), relative
+    citation = yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))
+    assert citation["repository-code"].endswith("/industrial-risk-control")

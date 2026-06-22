@@ -1,5 +1,5 @@
 [Unit]
-Description=Industrial research lab validation
+Description=Industrial risk control validation
 After=network-online.target
 
 [Service]

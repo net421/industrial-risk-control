@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import re
+import hashlib
+import json
 from pathlib import Path
 
 import yaml
@@ -14,6 +16,14 @@ REQUIRED = (
     "README.md",
     "pyproject.toml",
     "SECURITY.md",
+    "LICENSE",
+    "CITATION.cff",
+    "AUTOMATION_PROOF.md",
+    "LOCAL_FULL_RUN_SUMMARY.md",
+    "GITHUB_AUTOMATION_REPORT.md",
+    "GITHUB_ACTIONS_RUNBOOK.md",
+    "GITHUB_PUBLISH_INSTRUCTIONS.md",
+    "LOCAL_VALIDATION_REPORT.md",
     "docs/ARCHITECTURE.md",
     "docs/REPRODUCIBILITY.md",
     "docs/CI_CD.md",
@@ -22,6 +32,9 @@ REQUIRED = (
     ".github/workflows/full-cycle.yml",
     ".github/workflows/release.yml",
     ".github/workflows/codeql.yml",
+    ".github/workflows/cloud-proof.yml",
+    ".github/workflows/research-discovery.yml",
+    ".github/workflows/weekly-validation.yml",
 )
 FORBIDDEN_NAMES = re.compile(
     r"(^|/)(\.env|id_rsa|id_ed25519|credentials.*|.*\.(pem|key))$",
@@ -55,6 +68,18 @@ def main() -> int:
     if "schedule:" in trigger_block:
         errors.append("full-cycle workflow must not be scheduled")
 
+    proof_manifest = ROOT / "proof" / "local-full-20260621" / "PROOF_MANIFEST.json"
+    if not proof_manifest.exists():
+        errors.append("compact local full-proof manifest is missing")
+    else:
+        proof = json.loads(proof_manifest.read_text(encoding="utf-8"))
+        for item in proof.get("files", []):
+            path = proof_manifest.parent / item["path"]
+            if not path.exists():
+                errors.append(f"proof file missing: {item['path']}")
+            elif hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
+                errors.append(f"proof checksum mismatch: {item['path']}")
+
     for path in ROOT.rglob("*"):
         if not path.is_file():
             continue
@@ -78,4 +103,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

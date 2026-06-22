@@ -1,0 +1,9 @@
+[Unit]
+Description=Manual industrial risk control cloud-equivalent proof
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/industrial-risk-control
+ExecStart=/home/ubuntu/industrial-risk-control/.venv/bin/python -m industrial_research_lab.cli --profile cloud-proof --max-minutes 10 --output artifacts/server-cloud-proof

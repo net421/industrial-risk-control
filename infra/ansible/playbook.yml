@@ -4,8 +4,8 @@
   become: true
   vars:
     lab_user: ubuntu
-    lab_root: /home/ubuntu/industrial-research-automation-lab
-    repo_url: https://github.com/net421/industrial-research-automation-lab.git
+    lab_root: /home/ubuntu/industrial-risk-control
+    repo_url: https://github.com/net421/industrial-risk-control.git
   tasks:
     - name: Install minimal system packages
       ansible.builtin.apt:
@@ -41,4 +41,3 @@
       ansible.builtin.pip:
         name: "{{ lab_root }}[dev]"
         virtualenv: "{{ lab_root }}/.venv"
-

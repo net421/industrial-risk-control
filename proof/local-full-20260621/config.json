@@ -1,0 +1,25 @@
+{
+  "name": "full",
+  "p_values": [
+    0.02,
+    0.04,
+    0.06,
+    0.08,
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2
+  ],
+  "replication_seeds": [
+    20260429,
+    20260430
+  ],
+  "horizon": 1000,
+  "batch_size": 5000,
+  "max_batches_per_configuration": 10000,
+  "max_minutes": 90.0,
+  "reference_runs": 32,
+  "effective_max_minutes": 90.0
+}

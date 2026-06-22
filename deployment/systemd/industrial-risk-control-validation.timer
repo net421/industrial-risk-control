@@ -1,0 +1,9 @@
+[Unit]
+Description=Weekly industrial risk control validation
+
+[Timer]
+OnCalendar=Mon *-*-* 05:17:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

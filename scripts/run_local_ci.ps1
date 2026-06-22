@@ -1,11 +1,8 @@
 $ErrorActionPreference = "Stop"
-$Root = Split-Path -Parent $PSScriptRoot
-Set-Location $Root
+Set-Location (Split-Path -Parent $PSScriptRoot)
 $Python = Get-Command python -All -ErrorAction SilentlyContinue | Where-Object { $_.Source -notlike '*WindowsApps*' } | Select-Object -First 1 -ExpandProperty Source
 if (-not $Python) { throw "Activate a Python virtual environment or install Python." }
-
 & $Python -m pytest -q
 & $Python scripts/validate_repository.py
-& $Python -m industrial_research_lab.cli --profile ci --output artifacts/ci-validation --fresh
-& $Python scripts/validate_portfolio_run.py --run-dir artifacts/ci-validation
-& $Python .codex/skills/industrial-research-factory/scripts/validate_cycle.py
+& $Python -m industrial_research_lab.cli --profile ci --output artifacts/local-ci --fresh
+& $Python scripts/validate_portfolio_run.py --run-dir artifacts/local-ci

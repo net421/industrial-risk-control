@@ -1,20 +1,40 @@
-name: Full Bounded Cycle
+name: Full Cycle Wrapper
 
 on:
   workflow_dispatch:
     inputs:
       max_minutes:
-        description: Maximum computation time in minutes
+        description: Bounded runtime; 15 is the safe hosted-runner default
         required: true
-        default: "90"
+        default: "15"
+      profile:
+        description: Use cloud-proof unless a full run is intentional
+        required: true
+        type: choice
+        options: [cloud-proof, full]
+        default: cloud-proof
+      fresh_or_resume:
+        description: Resume is useful only when the runner preserves its workspace
+        required: true
+        type: choice
+        options: [fresh, resume]
+        default: fresh
+      run_mode:
+        description: Full runs are better on a controlled self-hosted runner
+        required: true
+        type: choice
+        options: [ubuntu-latest, self-hosted]
+        default: ubuntu-latest
 
 permissions:
   contents: read
 
 jobs:
-  full-cycle:
-    runs-on: ubuntu-latest
-    timeout-minutes: 100
+  bounded-cycle:
+    runs-on: ${{ inputs.run_mode }}
+    timeout-minutes: 120
+    env:
+      RUN_DIR: artifacts/full-wrapper
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -22,19 +42,40 @@ jobs:
           python-version: "3.13"
           cache: pip
       - run: python -m pip install -e ".[dev]"
-      - name: Run bounded full profile
-        run: >-
-          python -m industrial_research_lab.cli --profile full
-          --max-minutes "${{ inputs.max_minutes }}"
-          --output "artifacts/full-${{ github.run_id }}-${{ github.run_attempt }}"
-          --fresh
-      - name: Validate artifacts
-        run: >-
-          python scripts/validate_portfolio_run.py
-          --run-dir "artifacts/full-${{ github.run_id }}-${{ github.run_attempt }}"
+      - name: Warn about compute placement
+        run: |
+          echo "## Manual bounded cycle" >> "$GITHUB_STEP_SUMMARY"
+          echo "Profile: ${{ inputs.profile }}; maximum: ${{ inputs.max_minutes }} minutes." >> "$GITHUB_STEP_SUMMARY"
+          echo "Long full runs are usually better on a local, AWS/Oracle, or controlled self-hosted runner." >> "$GITHUB_STEP_SUMMARY"
+      - name: Run bounded profile
+        id: research_run
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          fresh_flag=""
+          if [[ "${{ inputs.fresh_or_resume }}" == "fresh" ]]; then fresh_flag="--fresh"; fi
+          python -m industrial_research_lab.cli --profile "${{ inputs.profile }}" --max-minutes "${{ inputs.max_minutes }}" --output "$RUN_DIR" $fresh_flag
+      - name: Validate compact evidence
+        if: steps.research_run.outcome == 'success'
+        run: python scripts/validate_portfolio_run.py --run-dir "$RUN_DIR"
+      - name: Write fallback guidance
+        if: steps.research_run.outcome != 'success'
+        run: |
+          echo "The hosted run did not complete. Use scripts/run_local_full.sh or scripts/run_local_full.ps1, or deploy to an AWS/Oracle worker." >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: full-cycle-${{ github.run_id }}-${{ github.run_attempt }}
-          path: artifacts/full-${{ github.run_id }}-${{ github.run_attempt }}
+          name: full-wrapper-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            artifacts/full-wrapper/summary.json
+            artifacts/full-wrapper/summary.csv
+            artifacts/full-wrapper/VALIDATION_REPORT.md
+            artifacts/full-wrapper/PERFORMANCE_REPORT.md
+            artifacts/full-wrapper/RUN_REPORT.md
+            artifacts/full-wrapper/CHECKSUMS.sha256
+          if-no-files-found: warn
           retention-days: 30
+      - name: Preserve failure status
+        if: steps.research_run.outcome != 'success'
+        run: exit 1

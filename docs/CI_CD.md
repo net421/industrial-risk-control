@@ -10,11 +10,18 @@ Python and GitHub Actions dependencies.
 
 ## Controlled Research Automation
 
-`smoke-cycle.yml` runs manually and on a weekly validation schedule. It is small
-enough for hosted runners and never promotes a scientific claim automatically.
+`smoke-cycle.yml` runs manually. `weekly-validation.yml` runs the lightweight CI
+profile and validators on a schedule; it never launches expensive research.
 
-`full-cycle.yml` is manual only. It uses a bounded time input, preserves a
-checkpoint, validates the completed run, and uploads compact artifacts.
+`cloud-proof.yml` is a manual, server-like hosted proof with a ten-minute default
+and compact-only artifact uploads.
+
+`full-cycle.yml` is manual only and defaults to a safe 15-minute cloud-proof
+profile. It accepts a controlled self-hosted runner mode for advanced use.
+
+`research-discovery.yml` is manual and produces gap-map, hypothesis, experiment,
+claim, validation, portfolio, paper-opportunity, and next-action artifacts. It
+does not establish novelty without live literature comparison.
 
 ## Continuous Delivery
 
@@ -25,4 +32,3 @@ approval before a full cycle.
 
 The deployment unit is validated code and configuration, not an automatically
 accepted scientific conclusion.
-

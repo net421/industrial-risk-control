@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-06-22T00:59:53.034694+00:00",
+  "source_run": "full-local-proof-20260621",
+  "excluded_large_files": [
+    "checkpoint.json",
+    "batch_metrics.csv"
+  ],
+  "files": [
+    {
+      "path": "config.json",
+      "bytes": 359,
+      "sha256": "0ddff4931f83ae79abb8a4cf97333dce9bb4e813218c65d224e9f161e4943fa5"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 12962,
+      "sha256": "cdbae2a160a484c318ad8e4eeaf6ea139a85e020f0eb40f52edff98dc1af39a4"
+    },
+    {
+      "path": "summary.csv",
+      "bytes": 3080,
+      "sha256": "743aaa2ea4e183dbbcb6c8ba2952718dff1079235da9b38c1a64bc9d10ea6c72"
+    },
+    {
+      "path": "VALIDATION_REPORT.md",
+      "bytes": 406,
+      "sha256": "bca0585be8fceec2000b6831c512b36e980480d52185332adf034fdf5b67c532"
+    },
+    {
+      "path": "PERFORMANCE_REPORT.md",
+      "bytes": 503,
+      "sha256": "61622fdfab0bd7ef4455f1ec341fd712d2916ed6630515fefc4a86539cecbd85"
+    },
+    {
+      "path": "RUN_REPORT.md",
+      "bytes": 315,
+      "sha256": "6e5d66e219dad7967285f9abd89b0f231f0f22edc7ed8195cd6149e963c13920"
+    }
+  ]
+}

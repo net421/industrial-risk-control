@@ -34,9 +34,9 @@ def test_batch_reference_and_numba_agree():
 def test_profile_fingerprint_changes_with_profile():
     assert profile_fingerprint(PROFILES["ci"]) != profile_fingerprint(PROFILES["smoke"])
     assert len(configurations(PROFILES["ci"])) == 3
+    assert PROFILES["cloud-proof"].max_minutes == 10.0
 
 
 def test_wilson_interval_contains_estimate():
     low, high = wilson_interval(60, 100)
     assert low < 0.6 < high
-

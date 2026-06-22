@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this research-automation code, cite this repository."
+title: "Industrial Risk Control Research Automation Lab"
+type: software
+authors:
+  - name: "net421"
+version: 0.1.0
+date-released: 2026-06-21
+repository-code: "https://github.com/net421/industrial-risk-control"
+license: MIT
+keywords:
+  - industrial reliability
+  - Monte Carlo
+  - Numba
+  - reproducible research
+  - CI/CD

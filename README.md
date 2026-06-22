@@ -1,7 +1,7 @@
 # Industrial Research Automation Lab
 
-[![CI](https://github.com/net421/industrial-research-automation-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/net421/industrial-research-automation-lab/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/net421/industrial-research-automation-lab/actions/workflows/codeql.yml/badge.svg)](https://github.com/net421/industrial-research-automation-lab/actions/workflows/codeql.yml)
+[![CI](https://github.com/net421/industrial-risk-control/actions/workflows/ci.yml/badge.svg)](https://github.com/net421/industrial-risk-control/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/net421/industrial-risk-control/actions/workflows/codeql.yml/badge.svg)](https://github.com/net421/industrial-risk-control/actions/workflows/codeql.yml)
 
 A reproducible research-engineering portfolio project for near-critical industrial
 stochastic systems. It combines deterministic Monte Carlo experiments, exact
@@ -52,7 +52,8 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
 | Profile | Purpose | Trigger | Workload rule |
 |---|---|---|---|
 | `ci` | Pull-request gate | Every push/PR | Fixed, under a few minutes |
-| `smoke` | Integration proof | Manual and weekly | Fixed pilot and replication |
+| `smoke` | Integration proof | Manual | Fixed pilot and replication |
+| `cloud-proof` | Hosted/server proof | Manual only | Ten-minute bounded default |
 | `full` | Portfolio-scale proof | Manual only | Up to 90 minutes, checkpointed |
 
 Run the bounded full profile:
@@ -74,6 +75,7 @@ primarily an engineering and reproducibility demonstration.
 See [Architecture](docs/ARCHITECTURE.md),
 [Reproducibility](docs/REPRODUCIBILITY.md),
 [CI/CD](docs/CI_CD.md), and the [CV project summary](docs/CV_PROJECT_SUMMARY.md).
+The evidence/status boundary is recorded in [AUTOMATION_PROOF.md](AUTOMATION_PROOF.md).
 
 ## Scope Boundary
 
