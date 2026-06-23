@@ -14,6 +14,36 @@ live literature retrieval, candidate-gap mapping, hypothesis ranking, frozen
 experiment design, deterministic simulation, validation, skeptical review, and
 a ranked portfolio decision.
 
+## What This Repository Contains
+
+This repository is evolving into a modular **research-factories framework**. It
+currently contains two distinct layers:
+
+1. **Industrial Risk-Control Research Factory**
+   - deterministic Monte Carlo simulation;
+   - Python reference implementation and Numba acceleration;
+   - reproducibility checks, fixed-seed replay, and independent-seed validation;
+   - checkpointed batch execution;
+   - statistical uncertainty reporting;
+   - GitHub Actions CI, CodeQL, smoke/full profiles, and hosted workflow proof;
+   - literature-to-hypothesis-to-experiment vertical cycle;
+   - claim-evidence matrix, skeptical review, ranked portfolio decision, and
+     SHA-256 artifact manifests.
+
+2. **Marxist Research Program Factory Scaffold**
+   - a separate methodological module under
+     [`factories/marxist-research-program`](factories/marxist-research-program/README.md);
+   - source-layer rules for foundational, continuation, comparative, empirical,
+     and rival traditions;
+   - protocols for historical case evaluation, prediction audits, critique
+     adjudication, agreement/disagreement mapping, reconciliation analysis, and
+     theory-extension questions;
+   - academic-article output orientation rather than final doctrinal claims;
+   - explicit safety and integrity boundaries for scholarly use only.
+
+The repository is therefore both a working industrial research-automation lab and
+a foundation for broader research-factory modules.
+
 ## Current Version
 
 The repository now provides a working vertical slice from literature metadata to
@@ -45,6 +75,28 @@ result.
 - SHA-256 manifests and compact CSV/JSON/Markdown artifacts
 - Ubuntu provisioning through shell and Ansible examples
 - Clear separation between engineering validation and scientific claims
+
+## Repository Map
+
+```text
+.
+├── .github/workflows/              # CI, CodeQL, smoke/full, and vertical-cycle workflows
+├── src/industrial_research_lab/     # Python package for industrial research automation
+├── scripts/                        # local and workflow entry points
+├── experiments/                    # experiment definitions and profiles
+├── protocol/                       # frozen experiment and research protocols
+├── literature/                     # literature metadata and retrieval artifacts
+├── hypotheses/                     # candidate and selected hypotheses
+├── claims/                         # claim-evidence records
+├── reports/                        # generated reports and summaries
+├── results/                        # computational outputs
+├── proof/                          # preserved local proof runs
+├── docs/                           # architecture, reproducibility, CI/CD, and project docs
+├── deployment/                     # Linux/cloud/self-hosted runner examples
+├── tests/                          # pytest validation suite
+└── factories/
+    └── marxist-research-program/   # historical/theoretical research-program scaffold
+```
 
 ## Architecture
 
@@ -149,12 +201,26 @@ unsupervised paper generator. Every promoted claim should remain traceable to
 verified literature, a frozen protocol, reproducible computation, statistical
 uncertainty, and explicit limitations.
 
+## Research Factories
+
+This branch begins expanding the project from a single industrial-risk factory
+into a modular research-factories framework.
+
+The first non-industrial module is:
+
+- [`factories/marxist-research-program`](factories/marxist-research-program/README.md)
+
+That module is a methodological scaffold for historical and theoretical research
+on Marxist traditions. It separates the primary theoretical corpus, comparative
+traditions, empirical evidence, and scholarly criticism so that outputs remain
+source-grounded and auditable.
+
+The module is not a completed historical adjudication. It is a research scaffold
+for source comparison, prediction audit, historical case evaluation, critique
+adjudication, agreement/disagreement mapping, reconciliation analysis, and
+future theory-extension questions under explicit human review.
+
 See [Architecture](docs/ARCHITECTURE.md),
 [Reproducibility](docs/REPRODUCIBILITY.md),
 [CI/CD](docs/CI_CD.md), and the [CV project summary](docs/CV_PROJECT_SUMMARY.md).
 The evidence/status boundary is recorded in [AUTOMATION_PROOF.md](AUTOMATION_PROOF.md).
-
-## Scope Boundary
-
-This repository contains only industrial stochastic-systems research. The
-separate doctrinal-text factory is intentionally excluded.

@@ -1,0 +1,84 @@
+author_layers:
+  core_foundational:
+    authority_role: primary_theoretical_foundation
+    default_weight: 1.00
+    authors:
+      - Marx
+      - Engels
+      - Lenin
+    rule: For foundational doctrinal questions, begin here before later authors.
+
+  central_continuators:
+    authority_role: main_line_development
+    default_weight: 0.90
+    authors:
+      - Stalin
+      - Enver_Hoxha
+      - Party_of_Labour_of_Albania
+    rule: Use as central continuation references of the Marxist-Leninist line, especially for socialist construction, revisionism, state power, imperialism, and party questions.
+
+  revolutionary_development_and_contrast:
+    authority_role: comparative_development_not_automatic_replacement
+    default_weight: 0.55
+    authors:
+      - Mao_Zedong
+      - Trotsky
+      - Rosa_Luxemburg
+      - Antonio_Gramsci
+      - Che_Guevara
+      - Jose_Carlos_Mariategui
+      - Amilcar_Cabral
+      - Ho_Chi_Minh
+    rule: Study seriously for insights, disagreements, historical tests, and possible reconciliation, but do not let this layer silently override the main line.
+
+  academic_empirical_context:
+    authority_role: evidence_context_verification_and_adversarial_review
+    default_weight: 0.35
+    source_types:
+      - peer_reviewed_history
+      - archival_research
+      - economic_statistics
+      - sociology
+      - political_science
+      - systems_theory
+      - hostile_or_rival_scholarship
+    rule: Use as evidence and critique material, not as doctrinal authority.
+
+  rival_or_excluded_as_main_line:
+    authority_role: object_of_critique_or_comparison_only
+    default_weight: 0.15
+    traditions:
+      - Bernsteinism
+      - reformist_social_democracy
+      - Eurocommunism
+      - parliamentary_socialism_as_substitution_for_revolutionary_transition
+      - Third_Way_politics
+      - socialism_of_the_21st_century_as_replacement_framework
+    rule: May be studied as rival interpretation, historical object, or critique target; not main-line authority.
+
+ranking_policy:
+  doctrinal_questions:
+    first: core_foundational
+    second: central_continuators
+    third: revolutionary_development_and_contrast
+    fourth: academic_empirical_context
+  historical_questions:
+    first: primary_historical_records
+    second: academic_empirical_context
+    third: main_line_and_rival_interpretations
+  theory_development_questions:
+    first: core_foundational
+    second: central_continuators
+    third: historical_outcomes
+    fourth: revolutionary_development_and_contrast
+    fifth: academic_empirical_context
+  critique_adjudication_questions:
+    first: primary_textual_evidence
+    second: primary_historical_evidence
+    third: academic_empirical_context
+    fourth: rival_interpretations
+
+non_equivalence_rule: >
+  Comparative inclusion does not imply equal authority. A rival or later author may
+  contribute a valid insight or identify a real problem, but the factory must state
+  explicitly when an extension modifies, qualifies, or contradicts the main line.
