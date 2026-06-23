@@ -149,12 +149,26 @@ unsupervised paper generator. Every promoted claim should remain traceable to
 verified literature, a frozen protocol, reproducible computation, statistical
 uncertainty, and explicit limitations.
 
+## Research Factories
+
+This branch begins expanding the project from a single industrial-risk factory
+into a modular research-factories framework.
+
+The first non-industrial module is:
+
+- [`factories/marxist-research-program`](factories/marxist-research-program/README.md)
+
+That module is a methodological scaffold for historical and theoretical research
+on Marxist traditions. It separates the primary theoretical corpus, comparative
+traditions, empirical evidence, and scholarly criticism so that outputs remain
+source-grounded and auditable.
+
+The module is not a completed historical adjudication. It is a research scaffold
+for source comparison, prediction audit, historical case evaluation, critique
+adjudication, agreement/disagreement mapping, reconciliation analysis, and
+future theory-extension questions under explicit human review.
+
 See [Architecture](docs/ARCHITECTURE.md),
 [Reproducibility](docs/REPRODUCIBILITY.md),
 [CI/CD](docs/CI_CD.md), and the [CV project summary](docs/CV_PROJECT_SUMMARY.md).
 The evidence/status boundary is recorded in [AUTOMATION_PROOF.md](AUTOMATION_PROOF.md).
-
-## Scope Boundary
-
-This repository contains only industrial stochastic-systems research. The
-separate doctrinal-text factory is intentionally excluded.
