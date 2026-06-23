@@ -6,15 +6,25 @@ This factory is designed to study, evaluate, and extend a Marxist revolutionary 
 
 The factory treats Marx, Engels, and Lenin as the foundational core. Stalin and Enver Hoxha are treated as central continuation references of the main line, especially for questions concerning Marxism-Leninism, state power, socialist construction, revisionism, imperialism, and party questions. Other revolutionary Marxist authors and traditions may be studied widely, but they do not automatically override the foundational core or define the main line.
 
+## Final Naming Decision
+
+The module name is **`marxist-research-program`**.
+
+This name is intentional. The factory is not merely an orthodox-text archive and not a neutral map of all socialist currents. It is a research-program factory: it preserves a defined theoretical core, tests it against history, studies internal disputes, audits predictions, and develops bounded academic hypotheses.
+
 ## Main Line
 
-The primary theoretical line is:
+The primary theoretical line is layered:
 
-1. Marx
-2. Engels
-3. Lenin
-4. Stalin
-5. Enver Hoxha
+1. **Foundational core:** Marx, Engels, Lenin.
+2. **Central continuators:** Stalin and Enver Hoxha.
+
+Stalin and Hoxha are not treated as secondary curiosities. They are central continuation references. However, the architecture keeps them in a distinct continuation layer so the factory can separately analyze:
+
+- what belongs to the foundational corpus;
+- what belongs to later development;
+- what was historically conditioned;
+- where later positions may clarify, extend, harden, or conflict with earlier positions.
 
 The factory may also use Party of Labour of Albania materials, Comintern materials, CPSU materials, and other historically relevant primary documents when a cycle explicitly scopes them.
 
@@ -31,6 +41,39 @@ These authors can contribute to:
 - finding points where positions may have been reconcilable;
 - identifying partial insights that may be integrated without abandoning the main line;
 - detecting actual deviations, unresolved contradictions, or historically contingent disputes.
+
+## Trajectory and Reconciliation Rule
+
+The factory should not only classify authors as right or wrong. It should trace trajectories of ideas.
+
+For major disputes, the factory should ask:
+
+1. What was the original shared problem?
+2. Where did the trajectories begin together?
+3. At which historical, theoretical, or strategic point did they diverge?
+4. Could they have continued together under different conditions?
+5. Did the divergence become fundamental, or was it partly contingent?
+6. Is there a higher-level formulation that preserves the strongest parts of both positions while remaining inside the revolutionary Marxist research program?
+
+Examples of valid reconciliation studies include disputes or tensions among Stalin, Trotsky, Mao, Luxemburg, Gramsci, Che, Hoxha, and other revolutionary Marxist currents.
+
+Examples of invalid reconciliation as a main-line goal include trying to reconcile revolutionary Marxism-Leninism with reformist social democracy, Bernsteinism, Eurocommunism, or parliamentary socialism as a substitute for revolutionary transition. Those may be studied, critiqued, or compared, but not treated as equal internal trajectories of the same research program.
+
+## Academic Article Output
+
+The main mature output of the factory should be academic-style articles and preprint-ready papers. Matrices, reports, and registers are supporting infrastructure.
+
+A mature cycle should aim to produce:
+
+- a bounded research question;
+- a source-grounded literature and primary-text review;
+- a historical case comparison;
+- a prediction audit;
+- a critique adjudication;
+- a disagreement and reconciliation map;
+- a theory-development section;
+- explicit limitations and confidence levels;
+- a final article draft with citations and appendices.
 
 ## Academic and Empirical Sources
 
@@ -87,6 +130,19 @@ When evidence appears to challenge the main line, the factory must not hide it. 
 
 Only after this classification may the factory propose a theory-extension hypothesis.
 
+## Correction and Reconciliation Rule
+
+The factory may correct, qualify, or reconcile later main-line continuation positions when strong evidence requires it. This includes the possibility that a dispute between central continuation figures and rival revolutionary authors may contain valid partial insights on both sides.
+
+A correction is not automatically a deviation. It becomes a valid research-program extension only if it:
+
+1. preserves the original position before revising it;
+2. identifies the evidence pressure;
+3. distinguishes textual doctrine from historical implementation;
+4. stays within the revolutionary Marxist research-program spectrum;
+5. states what is retained, corrected, rejected, or reconciled;
+6. remains open to skeptical review.
+
 ## Non-Equivalence Rule
 
 In comparative analysis, all authors may be studied seriously, but not all authors have equal authority for defining the main line. A later author, rival tradition, or academic source can provide evidence, criticism, or a useful correction, but cannot silently replace Marx, Engels, Lenin, Stalin, or Hoxha as the factory's main frame.
@@ -104,3 +160,4 @@ Every serious answer should, when possible, include:
 7. Critique adjudication: justified, unjustified, mixed, or unresolved.
 8. Points of agreement and possible reconciliation.
 9. Research frontier: what remains to be developed.
+10. Article-draft pathway: what evidence is still needed before publication.
