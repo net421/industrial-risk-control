@@ -9,6 +9,12 @@ stochastic systems. It combines deterministic Monte Carlo experiments, exact
 Python-versus-Numba validation, checkpointed batch execution, statistical
 uncertainty, CI/CD, artifact integrity, and Linux deployment examples.
 
+This repository also demonstrates an **AI-native research and analytics workflow**:
+AI is used as a technical execution layer for literature synthesis, hypothesis
+framing, code generation support, review scaffolding, documentation, and workflow
+iteration, while deterministic Python programs and human validation remain
+responsible for computation, statistics, manifests, and promoted claims.
+
 The current prototype also executes a small evidence-linked research cycle:
 live literature retrieval, candidate-gap mapping, hypothesis ranking, frozen
 experiment design, deterministic simulation, validation, skeptical review, and
@@ -35,6 +41,31 @@ collapse-risk differences across two independent seeds. This is preliminary
 evidence for a confirmatory run, not proof of novelty or a publication-ready
 result.
 
+## AI-Native Workflow
+
+This project is designed around **AI-augmented, human-validated research
+engineering**. The workflow treats AI as an execution partner that accelerates
+research design, code scaffolding, documentation, review, and iteration, but it
+does not outsource scientific judgment or numerical validation.
+
+The human role is to define the research problem, specify the validation gates,
+review generated logic, execute tests, inspect artifacts, reject weak claims, and
+ensure every promoted result remains traceable to verified evidence and
+reproducible computation.
+
+In practice, this repository uses an AI-native operating model to industrialize:
+
+- literature retrieval and evidence-mapping workflows;
+- hypothesis generation and skeptical review loops;
+- Python experiment scaffolding and analytical workflow iteration;
+- validation scripts, manifests, checksums, and artifact documentation;
+- reproducible CI/CD execution and bounded automation gates.
+
+This is not a conventional manual research notebook. It is a prototype of a
+research automation lab where AI-assisted reasoning, deterministic computation,
+CI/CD, and human-in-the-loop validation work together as an industrialized
+analytics system.
+
 ## What It Demonstrates
 
 - Python packaging and command-line interfaces
@@ -44,6 +75,7 @@ result.
 - GitHub Actions CI, scheduled smoke validation, manual full runs, and releases
 - SHA-256 manifests and compact CSV/JSON/Markdown artifacts
 - Ubuntu provisioning through shell and Ansible examples
+- AI-assisted research workflow orchestration with human validation gates
 - Clear separation between engineering validation and scientific claims
 
 ## Architecture
@@ -61,9 +93,10 @@ flowchart LR
 ```
 
 AI-assisted reasoning is intended for synthesis, hypothesis development,
-criticism, and writing. Deterministic Python programs own computation,
-statistics, manifests, and validation. Human approval remains required before
-expensive runs, releases, or publication decisions.
+criticism, writing, code scaffolding, and workflow acceleration. Deterministic
+Python programs own computation, statistics, manifests, and validation. Human
+approval remains required before expensive runs, releases, or publication
+decisions.
 
 ## Run Locally
 
